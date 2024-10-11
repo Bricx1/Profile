@@ -1,12 +1,22 @@
 import React from 'react';
-import { View, Text } from 'react-native-ui-lib';
-import Login from './Login'; // Import the Login.js component
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './Login';
+import Profile from './Profile';
 
-export default function App() {
+
+function App() {
   return (
-    <View flex paddingH-25 paddingT-120>
-      <Text blue50 text20>Welcome to the App</Text>
-      <Login /> {/* Use the Login component */}
-    </View>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+     
+        <Route path="/profile" element={<Profile />} />
+        
+        {/* Catch-all route for unmatched URLs */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 }
+
+export default App;
